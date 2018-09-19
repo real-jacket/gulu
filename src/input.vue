@@ -17,7 +17,7 @@
 
     export default {
         components: {
-            Icon:'g-icon'
+            'g-icon':Icon
         },
         name:'guluIput',
         props:{
