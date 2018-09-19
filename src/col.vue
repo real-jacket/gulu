@@ -39,10 +39,11 @@
 </script>
 <style lang="scss" scoped>
     .col{
-        border: 1px solid green;
+        background: grey;
+        border:1px solid red;
         height: 32px;
         width: 50%;
-
+    
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n}{
