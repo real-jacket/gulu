@@ -18,10 +18,10 @@ describe('Input', () => {
         afterEach(() => {
             vm.$destroy()
         })
-        it('接收 name', () => {
+        it('接收 value', () => {
             vm = new Constructor({
                 propsData: {
-                    name: '1234'
+                    value: '1234'
                 }
             }).$mount()
             const inputElement = vm.$el.querySelector('input')
@@ -57,6 +57,7 @@ describe('Input', () => {
             console.log(vm.$el)
             const useElement = vm.$el.querySelector('use')
             expect(useElement.getAttribute('xlink:href')).to.equal('#i-error')
+            const errorMessage = vm.$el.querySelector('.errormessage')
             expect(errorMessage.innerText).to.equal('你错了')
         })
     })
