@@ -27,15 +27,20 @@
 </style>
 <body>
 <div id="app">
-    <g-input name="张三" disabled></g-input>
-    <g-input name="李四" readonly></g-input>
-    <g-input name="王五"></g-input>
-    <g-input name="赵"></g-input>
+    <g-input value="张三" disabled></g-input>
+    <g-input value="李四" readonly></g-input>
+    <g-input value="王五"></g-input>
+    <g-input value="赵"></g-input>
     <div style="margin-top: 20px;">
-        <g-input name="不" @change="inputChange"></g-input>
+        <g-input value="不" @change="inputChange"></g-input>
     </div>
     <div style="margin-top: 20px;">
-        <g-input name="不" error="姓名不得少于两个字"></g-input>
+        <g-input v-model="message"></g-input>
+        <p>{{message}}</p>
+        <button @click="message+=1">+1</button>
+    </div>
+    <div style="margin-top: 20px;">
+        <g-input value="不" error="姓名不得少于两个字"></g-input>
     </div>
     <div style="padding-top: 20px">
         <g-button :loading="loading1" @click="loading1 = !loading1">
