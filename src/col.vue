@@ -50,7 +50,7 @@
                     ...createClasses(ipad,'ipad-'),
                     ...createClasses(narrowPc,'narrowPc-'),
                     ...createClasses(pc,'pc-'),
-                    ...createClasses(widePc,'widePc')
+                    ...createClasses(widePc,'widePc-')
                 ]
             },
             colStyle(){
@@ -143,7 +143,7 @@
 
         }
         @media (min-width: 1200px){
-            $class-prefix: col-widPc-;
+            $class-prefix: col-widePc-;
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n}{
                     width: ($n / 24) * 100%;
