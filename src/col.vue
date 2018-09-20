@@ -105,13 +105,13 @@
 
         }
         @media (min-width: 769px) and (max-width: 992px) {
-            $class-prefix: col-narrow-pc-;
+            $class-prefix: col-narrowPc-;
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n}{
                     width: ($n / 24) * 100%;
                 }
             }
-            $class-prefix: offset-narrow-pc-;
+            $class-prefix: offset-narrowPc-;
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n}{
                     margin-left: ($n / 24) * 100%;
@@ -134,13 +134,13 @@
 
         }
         @media (min-width: 1201px){
-            $class-prefix: col-wide-pc-;
+            $class-prefix: col-widPc-;
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n}{
                     width: ($n / 24) * 100%;
                 }
             }
-            $class-prefix: offset-wide-pc-;
+            $class-prefix: offset-widePc-;
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n}{
                     margin-left: ($n / 24) * 100%;
