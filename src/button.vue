@@ -67,8 +67,4 @@
             animation: spin 1s infinite linear;
         }
     }
-
-    #app {
-        margin: 20px;
-    }
 </style>
