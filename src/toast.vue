@@ -1,5 +1,5 @@
 <template>
-    <div class="toast" ref="toast">
+    <div class="toast" ref="toast" :class="positionClass">
         <div class="message">
             <div v-if="existHtml" v-html="$slots.default[0]"></div>
             <slot v-else></slot>
@@ -32,6 +32,13 @@
             existHtml:{
                 type:Boolean,
                 default:false
+            },
+            position:{
+                type:String,
+                default:'top',
+                validator(value){
+                    return  ['top','bottom','center'].indexOf(value) >= 0
+                }
             }
         },
         created(){
@@ -40,6 +47,13 @@
         mounted() {
             this.execAutoClose();
             this.updateStyle();
+        },
+        computed:{
+          positionClass(){
+              return {
+                  [`position-${this.position}`]:true
+              }
+          }
         },
         methods: {
             execAutoClose(){
@@ -82,9 +96,6 @@
         box-shadow: 0 0 5px 0 rgba(255, 97, 96, 0.50);
         padding: 0 16px;
         position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
         background: $toast-bg;
         display: flex;
         align-items: center;
@@ -102,6 +113,21 @@
         .line{
             margin-left: 10px;
             border-left: 1px solid white;
+        }
+        &.position-top{
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.position-bottom{
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.position-center{
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
     }
 </style>

@@ -44,6 +44,7 @@ new Vue({
         },
         showToast(){
             this.$toast('弹出消息：这是message', {
+                position:'top',
                 autoClose:true,
                 autoCloseDelay: 3,
                 closeButton:{
