@@ -42,10 +42,19 @@ new Vue({
         inputChange(e){
             console.log(e.target.value)
         },
-        showToast(){
+        showTop(){
+            this.showToast('top')
+        },
+        showCenter(){
+            this.showToast('center')
+        },
+        showBottom(){
+            this.showToast('bottom')
+        },
+        showToast(position){
             this.$toast(`弹出消息：这是第${parseInt(Math.random()*10)}条message`, {
-                position:'top',
-                autoClose:true,
+                position,
+                autoClose:false,
                 autoCloseDelay: 3,
                 closeButton:{
                     text:'知道了',
