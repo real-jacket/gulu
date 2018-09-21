@@ -36,13 +36,22 @@ new Vue({
         message:'hi'
     },
     created(){
+
     },
     methods:{
         inputChange(e){
             console.log(e.target.value)
         },
         showToast(){
-            this.$toast('弹出消息：这是消息！')
+            this.$toast('弹出消息：这是message',{
+                closeButton:{
+                    text:'知道了',
+                    callback(toast){
+                        toast.log();
+                        console.log('用户表示知道了');
+                    }
+                }
+            })
         }
     }
 });
