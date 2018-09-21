@@ -43,14 +43,17 @@ new Vue({
             console.log(e.target.value)
         },
         showToast(){
-            this.$toast('弹出消息：这是message',{
+            this.$toast('弹出消息：这是message', {
+                autoClose:true,
+                autoCloseDelay: 3,
                 closeButton:{
                     text:'知道了',
                     callback(toast){
                         toast.log();
                         console.log('用户表示知道了');
                     }
-                }
+                },
+                existHtml: false
             })
         }
     }

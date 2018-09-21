@@ -1,6 +1,10 @@
 <template>
-    <div class="toast">
-        <slot></slot>
+    <div class="toast" ref="toast">
+        <div class="message">
+            <div v-if="existHtml" v-html="$slots.default[0]"></div>
+            <slot v-else></slot>
+        </div>
+        <div class="line" ref="line"></div>
         <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
 </template>
@@ -10,11 +14,11 @@
         props: {
             autoClose: {
                 type: Boolean,
-                default: true
+                default: false
             },
             autoCloseDelay: {
                 type: Number,
-                default: 20
+                default: 200
             },
             closeButton: {
                 type: Object,
@@ -24,16 +28,32 @@
                         callback: undefined
                     }
                 }
+            },
+            existHtml:{
+                type:Boolean,
+                default:false
             }
+        },
+        created(){
+
         },
         mounted() {
-            if (this.autoClose) {
-                setTimeout(() => {
-                    this.close()
-                }, this.autoCloseDelay * 1000)
-            }
+            this.execAutoClose();
+            this.updateStyle();
         },
         methods: {
+            execAutoClose(){
+                if (this.autoClose) {
+                    setTimeout(() => {
+                        this.close()
+                    }, this.autoCloseDelay * 1000)
+                }
+            },
+            updateStyle(){
+                this.$nextTick(()=>{
+                    this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
+                })
+            },
             close() {
                 this.$el.remove()
                 this.$destroy()
@@ -57,7 +77,7 @@
     $toast-bg: rgba(121, 189, 143, 0.6);
     .toast {
         font-size: $font-size;
-        height: $toast-min-height;
+        min-height: $toast-min-height;
         line-height: 1.8;
         box-shadow: 0 0 5px 0 rgba(255, 97, 96, 0.50);
         padding: 0 16px;
@@ -70,15 +90,18 @@
         align-items: center;
         border-radius: 4px;
 
-        .close {
-            padding-left: 8px;
-            margin-left: 8px;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            border-left: 1px solid white;
-            cursor: pointer;
+        .message{
+            padding: 10px 0;
         }
-
+        .close {
+            height: 100%;
+            cursor: pointer;
+            flex-shrink: 0;
+            padding-left: 10px;
+        }
+        .line{
+            margin-left: 10px;
+            border-left: 1px solid white;
+        }
     }
 </style>
