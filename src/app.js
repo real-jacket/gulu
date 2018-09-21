@@ -43,7 +43,7 @@ new Vue({
             console.log(e.target.value)
         },
         showToast(){
-            this.$toast('弹出消息：这是message', {
+            this.$toast(`弹出消息：这是第${parseInt(Math.random()*10)}条message`, {
                 position:'top',
                 autoClose:true,
                 autoCloseDelay: 3,
