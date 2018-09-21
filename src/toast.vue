@@ -15,12 +15,11 @@
         name: 'GuluToast',
         props: {
             autoClose: {
-                type: Boolean,
-                default: false
-            },
-            autoCloseDelay: {
-                type: Number,
-                default: 200
+                type: [Boolean,Number],
+                default: 5,
+                validator(value){
+                    return value === false || typeof value === "function";
+                }
             },
             closeButton: {
                 type: Object,
@@ -62,7 +61,7 @@
                 if (this.autoClose) {
                     setTimeout(() => {
                         this.close()
-                    }, this.autoCloseDelay * 1000)
+                    }, this.autoClose * 1000)
                 }
             },
             updateStyle(){

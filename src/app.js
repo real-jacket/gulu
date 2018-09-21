@@ -54,8 +54,7 @@ new Vue({
         showToast(position){
             this.$toast(`弹出消息：这是第${parseInt(Math.random()*10)}条message`, {
                 position,
-                autoClose:false,
-                autoCloseDelay: 3,
+                autoClose: 3 ,
                 closeButton:{
                     text:'知道了',
                     callback(toast){
