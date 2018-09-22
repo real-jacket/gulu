@@ -51,6 +51,25 @@
 </style>
 <body>
 <div id="app">
+    <div id="tabs" style="height: 100vh;">
+        <g-tabs :selected.sync="selectedTab">
+            <g-tabs-nav>
+                <g-tabs-item name="js">
+                    <g-icon name="Setting"></g-icon>原生JavaScript
+                </g-tabs-item>
+                <g-tabs-item name="vue" disabled>Vue框架</g-tabs-item>
+                 <g-tabs-item name="wx">微信小程序</g-tabs-item>
+                <template slot="action">
+                    <button>设置</button>
+                </template>
+            </g-tabs-nav>
+            <g-tabs-body>
+                <g-tabs-pane name="js">掌握扎实的JS基础，熟悉常见的变量提升，闭包，Ajax等问题，熟悉ES5/ES6语法</g-tabs-pane>
+                <g-tabs-pane name="vue">熟悉vue生命周期以及钩子函数，了解组件通信，熟悉vuex、vuerouter路由</g-tabs-pane>
+                <g-tabs-pane name="wx">能够独立开发一个小程序</g-tabs-pane>
+            </g-tabs-body>
+        </g-tabs>
+    </div>
     <div id="toast" existHtml style="height: 100vh">
         <button @click="showTop">点击弹出top</button>
         <button @click="showCenter">点击弹出center</button>
