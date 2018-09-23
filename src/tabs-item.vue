@@ -25,7 +25,8 @@
         computed:{
             classes(){
                 return {
-                    active:this.active
+                    active:this.active,
+                    disabled: this.disabled
                 }
             }
         },
@@ -52,6 +53,10 @@
         cursor: pointer;
         &.active{
             color: $blue;
+        }
+        &.disabled{
+            pointer-events: none;
+            color: #aaa;
         }
     }
 </style>
