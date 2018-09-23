@@ -20,6 +20,9 @@
                 }
             }
         },
+        mounted(){
+          this.eventBus.$emit('update:selected',this.selected)
+        },
         data(){
             return {
                 eventBus: new Vue()

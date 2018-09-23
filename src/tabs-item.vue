@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-nav-item" @click="yyy">
+    <div class="tabs-item" @click="selected" :class="classes">
         <slot></slot>
     </div>
 </template>
@@ -7,27 +7,48 @@
     export default {
         name: 'GuluTabsNavItem',
         inject:['eventBus'],
+        data(){
+            return {
+                active:false
+            }
+        },
         props:{
             disabled:{
                 type:Boolean,
                 default:false
             },
             name:{
-                type: String,
+                type: String|Number,
                 require:true
             }
         },
-        created(){
-            this.eventBus.$on('update:selected',(data)=>{
-                console.log('这是tabs item得到的数据');
-                console.log(data);
+        computed:{
+            classes(){
+                return {
+                    active:this.active
+                }
+            }
+        },
+        mounted(){
+            this.eventBus.$on('update:selected',(name)=>{
+                return this.active = this.name === name;
             })
         },
         methods:{
-            yyy(){
+            selected(){
                 this.eventBus.$emit('update:selected',this.name)
             }
         }
     }
 </script>
-<style lang="scss"></style>
+<style scoped lang="scss">
+    .tabs-item{
+        padding: 0 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.active{
+            background: red;
+        }
+    }
+</style>

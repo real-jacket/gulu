@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-body-pane">
+    <div class="tabs-pane" :class="classes" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -7,18 +7,30 @@
     export default {
         name: 'GuluTabsBodyPane',
         inject:['eventBus'],
+        data(){
+          return {
+              active:false
+          }
+        },
         props:{
             name:{
-                type:String,
+                type:String|Number,
                 require:true
             }
         },
-        created(){
-            this.eventBus.$on('update:selected',(data)=>{
-                console.log('这是tabs pane得到的数据');
-                console.log(data);
+        computed:{
+          classes(){
+              return {
+                  active:this.active
+              }
+            }
+        },
+        mounted(){
+            this.eventBus.$on('update:selected',(name)=>{
+                return this.active = this.name === name;
             })
-        }
+        },
+
     }
 </script>
 <style lang="scss"></style>

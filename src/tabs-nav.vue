@@ -1,7 +1,9 @@
 <template>
     <div class="tabs-nav">
         <slot></slot>
-        <slot name="action"></slot>
+        <div class="action-wrapper">
+            <slot name="action"></slot>
+        </div>
     </div>
 </template>
 <script>
@@ -10,7 +12,20 @@
         props:{
         },
         created(){
+        },
+        mounted(){
         }
     }
 </script>
-<style lang="scss"></style>
+<style scoped lang="scss">
+    $tab-height:40px;
+    .tabs-nav{
+        height: $tab-height;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        & > .action-wrapper{
+            margin-left: auto;
+        }
+    }
+</style>
