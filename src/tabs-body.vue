@@ -6,6 +6,10 @@
 <script>
     export default {
         name: 'GuluTabsBody',
+        props:{
+        },
+        created(){
+        }
     }
 </script>
 <style lang="scss"></style>
