@@ -5,7 +5,7 @@
 </template>
 <script>
     export default {
-        name: 'GuluTabsBodyPane',
+        name: 'GuluTabsPane',
         inject:['eventBus'],
         data(){
           return {
@@ -33,4 +33,8 @@
 
     }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+    .tabs-pane{
+        padding-top: 10px;
+    }
+</style>

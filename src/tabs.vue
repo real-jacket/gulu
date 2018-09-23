@@ -21,7 +21,17 @@
             }
         },
         mounted(){
-          this.eventBus.$emit('update:selected',this.selected)
+            this.$children.forEach((vm)=>{
+                if (vm.$options.name === 'GuluTabsNav') {
+                    vm.$children.forEach((childvm)=>{
+                        if (childvm.name === this.selected
+                        &&childvm.$options.name === 'GuluTabsItem'){
+                            this.eventBus.$emit('update:selected',this.selected,childvm)
+                        }
+                    })
+                }
+            });
+
         },
         data(){
             return {
@@ -34,8 +44,11 @@
           }
         },
         created(){
-            console.log(this.eventBus);
         }
     }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+    .tabs{
+        padding: 1em;
+    }
+</style>

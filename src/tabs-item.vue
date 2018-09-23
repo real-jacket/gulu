@@ -5,7 +5,7 @@
 </template>
 <script>
     export default {
-        name: 'GuluTabsNavItem',
+        name: 'GuluTabsItem',
         inject:['eventBus'],
         data(){
             return {
@@ -32,24 +32,26 @@
         mounted(){
             this.eventBus.$on('update:selected',(name)=>{
                 return this.active = this.name === name;
+
             })
         },
         methods:{
             selected(){
-                this.eventBus.$emit('update:selected',this.name)
+                this.eventBus.$emit('update:selected',this.name,this)
             }
         }
     }
 </script>
 <style scoped lang="scss">
     .tabs-item{
-        padding: 0 1em;
+        $blue:#409EFF;
+        margin-right: 2em;
         display: flex;
         align-items: center;
         height: 100%;
         cursor: pointer;
         &.active{
-            background: red;
+            color: $blue;
         }
     }
 </style>
