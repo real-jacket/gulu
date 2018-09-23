@@ -45,8 +45,9 @@
     .tabs-item{
         padding: 0 1em;
         display: flex;
-        justify-content: center;
         align-items: center;
+        height: 100%;
+        cursor: pointer;
         &.active{
             background: red;
         }
