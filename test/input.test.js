@@ -44,7 +44,6 @@ describe('Input', () => {
                 }
             }).$mount()
             const inputElement = vm.$el.querySelector('input')
-            console.log(inputElement);
             expect(inputElement.readOnly).to.equal(true)
         })
 
@@ -54,7 +53,6 @@ describe('Input', () => {
                     error: '你错了'
                 }
             }).$mount()
-            console.log(vm.$el)
             const useElement = vm.$el.querySelector('use')
             expect(useElement.getAttribute('xlink:href')).to.equal('#i-error')
             const errorMessage = vm.$el.querySelector('.errormessage')
