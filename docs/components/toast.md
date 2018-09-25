@@ -1,4 +1,4 @@
-# 
+# Toast
 
 ## 常见弹窗
 
@@ -10,7 +10,7 @@
 
 ```html
 <style>
-    .wrapper{
+    .gulu-wrapper{
         z-index: 30;
     }
 </style>
@@ -29,7 +29,7 @@
 
 ```html
 <style>
-    .wrapper{
+    .gulu-wrapper{
         z-index: 30;
     }
 </style>
@@ -61,7 +61,7 @@ methods: {
 
 ```html
 <style>
-    .wrapper{
+    .gulu-wrapper{
         z-index: 30;
     }
 </style>
