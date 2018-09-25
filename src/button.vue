@@ -3,7 +3,7 @@
     @click="$emit('click')">
         <g-icon class="icon" v-if="icon && !loading" :name="icon"></g-icon>
         <g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
-        <div class="content">
+        <div class="g-content">
             <slot></slot>
         </div>
     </button>
@@ -17,7 +17,10 @@
         },
         props: {
             icon:{},
-            loading:{},
+            loading:{
+                type: Boolean,
+                default: false
+            },
             iconPosition:{
                 type:String,
                 default:'left',

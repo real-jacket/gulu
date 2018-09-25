@@ -1,9 +1,8 @@
 <template>
-    <div class="wrapper" :class="positionClass">
+    <div class="gulu-wrapper" :class="positionClass">
         <div class="toast" ref="toast">
             <div class="message">
-                <div v-if="existHtml" v-html="$slots.default[0]"></div>
-                <slot v-else></slot>
+                <div v-html="$slots.default[0]"></div>
             </div>
             <div class="line" ref="line"></div>
             <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
@@ -18,7 +17,7 @@
                 type: [Boolean,Number],
                 default: 5,
                 validator(value){
-                    return value === false || typeof value === "function";
+                    return value === false || typeof value === "number";
                 }
             },
             closeButton: {
@@ -29,10 +28,6 @@
                         callback: undefined
                     }
                 }
-            },
-            existHtml:{
-                type:Boolean,
-                default:false
             },
             position:{
                 type:String,
@@ -90,7 +85,7 @@
 <style lang="scss">
     $font-size: 14px;
     $toast-min-height: 40px;
-    $toast-bg: rgba(121, 189, 143, 0.6);
+    $toast-bg: rgb(121,189,143);
     @keyframes slide-up {
         0%{opacity: 0;transform: translateY(-100%)}
         100%{opacity: 1;transform: translateY(0%)}
@@ -103,7 +98,7 @@
         0%{opacity: 0;}
         100%{opacity: 1;}
     }
-    .wrapper{
+    .gulu-wrapper{
         position: fixed;
         left: 50%;
         &.position-top{
@@ -144,7 +139,7 @@
         align-items: center;
 
         .message{
-            padding: 10px 0;
+            padding: 4px 0;
         }
         .close {
             height: 100%;

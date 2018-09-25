@@ -10,6 +10,7 @@
 </script>
 <style lang="scss" scoped>
     .footer{
-
+        background: rgb(121,189,143);
+        height: 50px;
     }
 </style>

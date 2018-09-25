@@ -25,7 +25,6 @@ function createToast({Vue,message,propsData,onClose}){
     toast.$slots.default = [message];
     toast.$mount();
     toast.$on('close',onClose)
-    let toastDiv = document.getElementById('toast');
-    toastDiv.appendChild(toast.$el);
+    document.body.appendChild(toast.$el);
     return toast
 }

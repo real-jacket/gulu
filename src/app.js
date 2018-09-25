@@ -65,7 +65,7 @@ new Vue({
             this.showToast('bottom')
         },
         showToast(position){
-            this.$toast(`弹出消息：这是第${parseInt(Math.random()*10)}条message`, {
+            this.$toast(`<p style="color: red">弹出消息：这是第${parseInt(Math.random()*10)}条message</p>`, {
                 position,
                 autoClose: 3 ,
                 closeButton:{
@@ -75,7 +75,7 @@ new Vue({
                         console.log('用户表示知道了');
                     }
                 },
-                existHtml: false
+                existHtml: true
             })
         }
     }

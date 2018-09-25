@@ -19,6 +19,8 @@
 <style lang="scss" scoped>
     .sider{
         position: relative;
+        background: rgb(255,97,56);
+        width: 200px;
         & > button{
             position: absolute;
             top:0;
