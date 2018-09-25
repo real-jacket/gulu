@@ -35,6 +35,7 @@ describe('Toast', () => {
                         text: '关闭吧',
                         callback,
                     },
+                    existHtml: false
                 }
             }).$mount()
             let closeButton = vm.$el.querySelector('.close')
@@ -42,7 +43,7 @@ describe('Toast', () => {
             closeButton.click()
             expect(callback).to.have.been.called
         })
-        it('接受 enableHtml', () => {
+        it('接受 existHtml', () => {
             const Constructor = Vue.extend(Toast)
             const vm = new Constructor({
                 propsData: {existHtml: true}
@@ -56,7 +57,8 @@ describe('Toast', () => {
             const Constructor = Vue.extend(Toast)
             const vm = new Constructor({
                 propsData: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    existHtml: false
                 }
             }).$mount()
             expect(vm.$el.classList.contains('position-bottom')).to.eq(true)

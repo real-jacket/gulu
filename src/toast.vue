@@ -2,7 +2,8 @@
     <div class="gulu-wrapper" :class="positionClass">
         <div class="toast" ref="toast">
             <div class="message">
-                <div v-html="$slots.default[0]"></div>
+                <div v-if="existHtml" v-html="$slots.default[0]"></div>
+                <slot v-else></slot>
             </div>
             <div class="line" ref="line"></div>
             <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
@@ -29,6 +30,10 @@
                     }
                 }
             },
+            existHtml:{
+                type:Boolean,
+                default:true
+            },
             position:{
                 type:String,
                 default:'top',
@@ -38,7 +43,6 @@
             }
         },
         created(){
-
         },
         mounted() {
             this.execAutoClose();
@@ -77,7 +81,6 @@
                 if (this.closeButton && typeof this.closeButton.callback === 'function') {
                     this.closeButton.callback(this);
                 }
-
             }
         }
     }
@@ -137,7 +140,6 @@
         background: $toast-bg;
         display: flex;
         align-items: center;
-
         .message{
             padding: 4px 0;
         }
